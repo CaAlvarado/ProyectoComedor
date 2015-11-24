@@ -1,15 +1,28 @@
-package modelo;
+package model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * 
  */
+@Entity
 public class Pago {
 
-    private double monto;
-    private String fecha;
+	@Id @GeneratedValue
     private Long idPago;
+    private double monto;
+    private String fecha; 
+    
+    @OneToOne (mappedBy = "pago")
     private Persona persona;
+    
+    @OneToOne(optional = false, mappedBy="pago")
     private Compra compra;
+   @ManyToOne(optional = false)
     private Sede sede;
 
 	public double getMonto() {

@@ -1,16 +1,26 @@
-package modelo;
+package model;
 
-/**
- * 
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Componente {
-
+	
+	
+	@Id @GeneratedValue
+	private Long idComponente;
     private String nombre;
     private boolean aptoCeliaco;
     private boolean aptoDiabetico;
     private boolean aptoLactosa;
     boolean aptoHipertenso;
-    private Long idComponente;
+    
+  
+    
+    
+ 
 
 	public String getNombre() {
 		return nombre;

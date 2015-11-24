@@ -1,12 +1,18 @@
-package modelo;
+package model;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  * 
  */
+@Entity
 public class Responsable extends Usuario {
 
     private boolean activo;
     private Long idResponsable;
+    
+    @OneToOne (mappedBy = "resposable")
     private Sede sede;
 
 	public boolean isActivo() {

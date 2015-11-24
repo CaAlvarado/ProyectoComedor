@@ -1,11 +1,23 @@
-package modelo;
+package model;
 
-/**
- * 
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
+	
+	@Id @GeneratedValue
+	private Long id;
+    public Long getId() {
+		return id;
+	}
 
-    private String nombre;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	private String nombre;
     private String apellido;
     private int dni;
     private String direccion;

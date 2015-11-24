@@ -1,15 +1,31 @@
-package modelo;
+package model;
 
 import java.io.File;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * 
  */
+@Entity
 public class Menu {
 
     private String nombre;
     private boolean vegetariano;
     private double precioMenu;
+    
+    
+    
+    
+    @ManyToOne(optional=false)
+    private Cartilla cartilla;
+    
+   
+	@Id @GeneratedValue
     private Long idMenu;
     private boolean aptoCeliaco;
     private boolean aptoDiabetico;
@@ -17,10 +33,25 @@ public class Menu {
     private boolean aptoHipertenso;
     private File imagen;
     private String dia;
+    
+    @OneToOne(optional = false)
     private Componente entrada;
+    @OneToOne(optional = false)
     private Componente principal;
+    @OneToOne(optional = false)
     private Componente bebida;
+    @OneToOne(optional = false)
     private Componente postre;
+    
+    
+    public Cartilla getCartilla() {
+		return cartilla;
+	}
+
+	public void setCartilla(Cartilla cartilla) {
+		this.cartilla = cartilla;
+	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -134,7 +165,7 @@ public class Menu {
 		this.postre = postre;
 	}
 
-
+	
 
 
 

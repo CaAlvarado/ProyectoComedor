@@ -1,17 +1,28 @@
-package modelo;
+package model;
 
 import java.util.LinkedList;
+import java.util.List;
 
-/**
- * 
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Compra {
 
+	@Id @GeneratedValue
     private Long idCompra;
     private boolean llevar;
     private double total;
-    private LinkedList<SemanaCompra> semanas;
-
+    
+    @OneToMany(mappedBy="compra")
+    private List<SemanaCompra> semanas;
+    
+    @OneToOne(optional = false)
+    private Pago pago;
+    
 	public Long getIdCompra() {
 		return idCompra;
 	}
@@ -36,7 +47,7 @@ public class Compra {
 		this.total = total;
 	}
 
-	public LinkedList<SemanaCompra> getSemanas() {
+	public List<SemanaCompra> getSemanas() {
 		return semanas;
 	}
 

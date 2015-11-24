@@ -1,11 +1,16 @@
-package modelo;
+package model;
 
 import java.io.File;
-import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 /**
  * 
  */
+@Entity
 public class Persona extends Usuario {
 
     private Long idAlumno;
@@ -18,7 +23,19 @@ public class Persona extends Usuario {
     private boolean toleranteLactosa;
     private boolean diabetico;
     private String tipo; 
-    private LinkedList<Facultad> facultades;
+    
+    @ManyToMany (mappedBy = "personas")
+    private List<Facultad> facultades;
+    @OneToOne (optional = false)
+    private Pago pago;
+
+	public Pago getPago() {
+		return pago;
+	}
+
+	public void setPago(Pago pago) {
+		this.pago = pago;
+	}
 
 	public Long getIdAlumno() {
 		return idAlumno;
@@ -100,11 +117,11 @@ public class Persona extends Usuario {
 		this.tipo = tipo;
 	}
 
-	public LinkedList<Facultad> getFacultades() {
+	public List<Facultad> getFacultades() {
 		return facultades;
 	}
 
-	public void setFacultades(LinkedList<Facultad> facultades) {
+	public void setFacultades(List<Facultad> facultades) {
 		this.facultades = facultades;
 	}
 

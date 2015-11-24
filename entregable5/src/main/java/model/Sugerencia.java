@@ -1,13 +1,23 @@
-package modelo;
+package model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
  */
+@Entity
 public class Sugerencia {
-
+	
+    @Id @GeneratedValue
+    private Long idSugerencia;
     private String tipo;
     private String contenido;
-    private Long idSugerencia;
+    
+    @ManyToOne(optional = false)
+    private Sede sede;
 
 	public String getTipo() {
 		return tipo;
