@@ -17,7 +17,6 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("P")
 public class Persona extends Usuario {
 
-    private Long idAlumno;
     private double saldo;
     private File foto;
     private String email;
@@ -33,7 +32,7 @@ public class Persona extends Usuario {
     		joinColumns=@JoinColumn(name="PER_ID", referencedColumnName="id"),
     		inverseJoinColumns=@JoinColumn(name="FACU_ID", referencedColumnName="idFacultad"))	
     private List<Facultad> facultades;
-    @OneToOne (optional = false)
+    @OneToOne (optional = true)
     private Pago pago;
 
 	public Pago getPago() {
@@ -42,10 +41,6 @@ public class Persona extends Usuario {
 
 	public void setPago(Pago pago) {
 		this.pago = pago;
-	}
-
-	public Long getIdAlumno() {
-		return idAlumno;
 	}
 
 	public double getSaldo() {
