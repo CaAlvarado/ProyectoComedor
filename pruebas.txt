@@ -1,1 +1,2 @@
-Para ejecutar las pruebas importe el .war del proyecto (nombre entregable5), abra la clase Prueba.java dentro de src/main/java/default package y ejecute el metodo main de la clase como una aplicacion.
+Para ejecutar las pruebas primero cree de forma local una base de datos llamada "comedor", luego importe el .war del proyecto (nombre entregable5), abra la clase Prueba.java dentro de src/main/java/default package y ejecute el metodo main de la clase como una aplicacion.
+Aclaracion: debe tener el servidor de MySQL andando sino no va a poder conectarse a la base
