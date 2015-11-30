@@ -1,1 +1,1 @@
-Para correr las pruebas ejecute el metodo main
+Para ejecutar las pruebas importe el .war del proyecto (nombre entregable5), abra la clase Prueba.java dentro de src/main/java/default package y ejecute el metodo main de la clase como una aplicacion.
