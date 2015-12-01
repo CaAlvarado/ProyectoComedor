@@ -30,10 +30,10 @@ public class Sede {
     @OneToMany(mappedBy = "sede")
     private List<Cartilla> cartillas; 
      
-    @OneToOne (optional = false)
+    @OneToOne (mappedBy = "sede")
     private Responsable resposable;
     
-    @ManyToOne (optional = false)
+    @ManyToOne (optional = true)
     private Administrador administrador;
 	public Administrador getAdministrador() {
 		return administrador;

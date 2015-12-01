@@ -1,6 +1,6 @@
 package implementacionDAO;
 
-import java.awt.Menu;
+import modelo.Menu;
 
 public class MenuDAOHibernateJPA extends DAOHibernateJPA<Menu> {
 

@@ -19,13 +19,21 @@ public class Pago {
     private String fecha; 
     private boolean activo=true;
     
-    @OneToOne (mappedBy = "pago")
-    private Persona persona;
-    
     @OneToOne(optional = false, mappedBy="pago")
     private Compra compra;
    @ManyToOne(optional = false)
     private Sede sede;
+   
+   public Persona getPersona() {
+	   return persona;
+   }
+
+   public void setPersona(Persona persona) {
+	   this.persona = persona;
+   }
+
+   @OneToOne (optional = false)
+   private Persona persona;
 
 	public double getMonto() {
 		return monto;
@@ -45,15 +53,6 @@ public class Pago {
 
 	public Long getIdPago() {
 		return idPago;
-	}
-
-
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
 	}
 
 	public Compra getCompra() {

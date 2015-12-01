@@ -23,7 +23,7 @@ public class Menu {
     
     
     
-    @ManyToOne(optional=false)
+    @ManyToOne(optional=true)
     private Cartilla cartilla;
     
    
@@ -36,13 +36,13 @@ public class Menu {
     private File imagen;
     private String dia;
     
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private Componente entrada;
     @OneToOne(optional = false)
     private Componente principal;
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private Componente bebida;
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private Componente postre;
     
     

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 
 /**
  * 
@@ -32,16 +31,6 @@ public class Persona extends Usuario {
     		joinColumns=@JoinColumn(name="PER_ID", referencedColumnName="id"),
     		inverseJoinColumns=@JoinColumn(name="FACU_ID", referencedColumnName="idFacultad"))	
     private List<Facultad> facultades;
-    @OneToOne (optional = true)
-    private Pago pago;
-
-	public Pago getPago() {
-		return pago;
-	}
-
-	public void setPago(Pago pago) {
-		this.pago = pago;
-	}
 
 	public double getSaldo() {
 		return saldo;

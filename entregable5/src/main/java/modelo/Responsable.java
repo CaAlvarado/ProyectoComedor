@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("R")
 public class Responsable extends Usuario {
     
-    @OneToOne (mappedBy = "resposable")
+    @OneToOne (optional = true)
     private Sede sede;
 
 

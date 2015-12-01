@@ -15,8 +15,8 @@ public class Cartilla {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
     private Long idCartilla;
-    private Date fechaInit;
-    private Date fechaFin;
+    private Calendar fechaInit;
+    private Calendar fechaFin;
     private String nombre;
     private boolean activo=true;
     
@@ -47,19 +47,19 @@ public class Cartilla {
 	}
 
 
-	public Date getFechaInit() {
+	public Calendar getFechaInit() {
 		return fechaInit;
 	}
 
-	public void setFechaInit(Date fechaInit) {
+	public void setFechaInit(Calendar fechaInit) {
 		this.fechaInit = fechaInit;
 	}
 
-	public Date getFechaFin() {
+	public Calendar getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(Calendar fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 

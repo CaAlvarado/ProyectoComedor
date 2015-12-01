@@ -1,11 +1,13 @@
 package implementacionDAO;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class DAOHibernateJPA<T> implements interfazDAO.InterfazDAO<T>{
 
@@ -99,13 +101,13 @@ public class DAOHibernateJPA<T> implements interfazDAO.InterfazDAO<T>{
 	}
 
 	public List<T> recuperarTodos(String orden){
-		Query consulta= EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+"e order by e."+orden);
-		List<T> resultado = (List<T>) consulta.getResultList();
+		Query consulta= EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden);
+		List<T> resultado = consulta.getResultList();
 		return resultado;
 	}
 	
 	public List<T> recuperarTodos(int cantidad, int limite, String orden){
-		Query consulta= EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+"e order by e."+orden+" limit "+cantidad+","+limite);
+		TypedQuery<T> consulta= (TypedQuery<T>) EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden+" limit "+cantidad+","+limite);
 		List<T> resultado= (List<T>) consulta.getResultList();
 		return resultado;
 	}
