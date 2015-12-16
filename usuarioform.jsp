@@ -79,26 +79,47 @@
 		  <br>
 		  <br>
 			
-			<div><h1>Para agregar un nueva sede</h1></div>
+			<div><h1>Para agregar un nuevo usuario</h1></div>
 			<div><h4>Complete los siguientes datos</h4></div>
 			
 			<div >
 				
-				<form:form id="sedeRegisterForm" modelAttribute="sede" method="post" action="saveSede">
+				<form:form id="usuarioRegisterForm" modelAttribute="usuario" method="post" action="saveUsuario">
 					<form:hidden path="id"  value="${sedeObject.id}" />
 				  <div class="form-group">
-				    <label>Nombre de la sede</label>
+				    <label>Nombre</label>
 				    <form:input path="nombre" value="${usuarioObject.id}" class="form-control" />
 				    <form:errors path="nombre" cssClass="error"/>
 				  </div>
 				  <div class="form-group">
-				    <label>Direccion de la sede</label>
+				    <label>Apellido</label>
+				    <form:input path="apellido" class="form-control" />
+				    <form:errors path="apellido" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>DNI</label>
+				    <form:input path="dni" class="form-control" />
+				    <form:errors path="dni" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>Direccion</label>
 				    <form:input path="direccion" class="form-control" />
 				    <form:errors path="direccion" cssClass="error"/>>
 				  </div>
+				   <div class="form-group">
+				    <label>Password</label>
+				    <form:input path="pass" class="form-control" />
+				    <form:errors path="pass" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>tipo de usuario(valido: administrador o resposable)</label>
+				    <form:input path="tipo_usuario" class="form-control" />
+				    <form:errors path="tipo_usuario" cssClass="error"/>>
+				  </div>
 				 
-				  <button onclick="return submitusuarioForm();" type="submit" class="btn btn-default">Crear sede</button>
+				  <button onclick="return submitusuarioForm();" type="submit" class="btn btn-default">Crear usuario</button>
 				</form:form>
+				
 				
 			
 						
@@ -124,5 +145,16 @@
 
 
 <script type="text/javascript" src="/bootstrat-3.3.5-dist/js/bootstrap.min.js"></script> 
+</body>
+</html><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
 </body>
 </html>

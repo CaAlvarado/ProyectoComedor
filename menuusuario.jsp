@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,14 +44,14 @@
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                </button>
-		                <a class="navbar-brand page-scroll" href="#page-top">Quieres comer en el comedor (click aqui)!</a>
+		                <a class="navbar-brand page-scroll" href="index.jsp">PRICIPAL</a>
 		            </div>
 		
 		            <!-- Collect the nav links, forms, and other content for toggling -->
 		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		                <ul class="nav navbar-nav navbar-right">
 		                    <li>
-		                        <a class="page-scroll" href="#login">Login</a>
+		                        <a class="page-scroll" href="#historia">Historia</a>
 		                    </li>
 		                    <li>
 		                        <a class="page-scroll" href="#servicios">Servicios</a>
@@ -61,10 +60,10 @@
 		                        <a class="page-scroll" href="#el comedor">Sugerencias</a>
 		                    </li>
 		                    <li>
-		                        <a class="page-scroll" href="#contact">Menu de esta semana</a>
+		                        <a class="page-scroll" href="#contact">Salir</a>
 		                    </li>
 		                    <li>
-		                        <a class="page-scroll" href="#contact">Contacto</a>
+		                        <a class="page-scroll" href="#contact">Nombre del usuario</a>
 		                    </li>
 		                </ul>
 		            </div>
@@ -79,37 +78,33 @@
 		  <br>
 		  <br>
 			
-			<div><h1>Para agregar un nueva sede</h1></div>
-			<div><h4>Complete los siguientes datos</h4></div>
+			<div><h1>BIENVENIDO USUARIO DEL COMEDOR</h1></div>
+			<div style="height:100px"><h4>USTED DISPONE DE LAS SIGUIENTES OPCIONES </h4></div>
 			
-			<div >
+			<div style="height:300px">
 				
-				<form:form id="sedeRegisterForm" modelAttribute="sede" method="post" action="saveSede">
-					<form:hidden path="id"  value="${sedeObject.id}" />
-				  <div class="form-group">
-				    <label>Nombre de la sede</label>
-				    <form:input path="nombre" value="${usuarioObject.id}" class="form-control" />
-				    <form:errors path="nombre" cssClass="error"/>
-				  </div>
-				  <div class="form-group">
-				    <label>Direccion de la sede</label>
-				    <form:input path="direccion" class="form-control" />
-				    <form:errors path="direccion" cssClass="error"/>>
-				  </div>
-				 
-				  <button onclick="return submitusuarioForm();" type="submit" class="btn btn-default">Crear sede</button>
-				</form:form>
+				<div>
+				<button type="button" class="btn btn-primary btn-lg btn-block">Actualizar datos de perfil</button>
+				<button type="button" class="btn btn-default btn-lg btn-block">Comprar ticket y pagos</button>
+				</div>
 				
-			
-						
+				<div>
+				<button type="button" class="btn btn-primary btn-lg btn-block">Comentar o sugerir</button>
+				</div>
+				
+				
+				
+				
 			
 			
 			</div >
 			
-			<div style="height: 500px">
+			<div style="height:400px">
+			
 				<jsp:include page="footer.jsp" flush="false" >
 					<jsp:param name="subtitulo" value="subtitulo de pagina auto.jsp formulario de cotizacion"/>
 				</jsp:include>
+				
 			</div>
 			
 			
@@ -122,7 +117,7 @@
 </div>
 	
 
-
 <script type="text/javascript" src="/bootstrat-3.3.5-dist/js/bootstrap.min.js"></script> 
+<script src="/resources/jqueryBootgrid/jquery.bootgrid.js"></script>
 </body>
 </html>
