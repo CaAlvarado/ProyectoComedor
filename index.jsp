@@ -68,7 +68,7 @@
                         <a class="page-scroll" href="#contact">Menu de esta semana</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="login.jsp">Login</a>
+                        <a class="page-scroll" href="login">Login</a>
                     </li>
                 </ul>
             </div>
