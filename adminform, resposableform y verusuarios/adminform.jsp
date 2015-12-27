@@ -71,50 +71,57 @@
 		  <br>
 		  <br>
 			
-			<div><h1>Estos son todos los usuarios agregados</h1></div>
-			<div><h4>Puede editarlos, eliminarlos o agregar un usuario nuevo</h4></div>
+			<div><h1>Para agregar un nuevo usuario ADMINISTRADOR</h1></div>
+			<div><h4>Complete los siguientes datos</h4></div>
 			
-				<div>
-				<button type="button" class="btn btn-primary btn-lg btn-block" action="#">Agregar Responsable</button> <!-- hay que agregar el nombre del controlador que te lleva a crear los usuarios -->
-				<button type="button" class="btn btn-primary btn-lg btn-block" action="#">Agregar Administrador</button> <!-- hay que agregar el nombre del controlador que te lleva a crear los usuarios -->
-				</div>
+			<div >
 				
-				<div class="panel-body">
-		            <c:if test="${empty usuarios}"> <!-- ACA LE PUSE NOMBRE usuarios pero lo podes cambiar compa -->
-		                No hay Usuarios  
-		            </c:if>
-		            <c:if test="${not empty usuarios}">
-		                <table class="table">
-		                    <thead>
-		                    <tr>
-		                        <th>Nombre</th>
-		                        <th>Apellido</th>
-		                        <th>Direccion</th>
-		                        <th>Dni</th>
-		                        <th>Usuario</th>
-		                        <th>Password</th>
-		                        <th>Editar</th>
-		                        <th>Eliminar</th>
-		                    </tr>
-		                    </thead>
-		                    <tbody>
-		                    <c:forEach items="${usuarios}" var="usr"> <!-- aca hay que prestar atencion al nombre de la var que uses -->
-		                    <tr class="active">
-								<td><c:out value="${usr.nombre}" /></td>
-								<td><c:out value="${usr.apellido}" /></td>
-								<td><c:out value="${usr.direccion}" /></td>
-								<td><c:out value="${usr.dni}" /></td>
-								<td><c:out value="${usr.usuario}" /></td>
-								<td><c:out value="${usr.password}" /></td>
-								<td><a href="editUsuario?id=${usr.id}">Editar</a></td> <!-- Aca hay que cambiar el href dependiendo de los nombres que uses en el controlador -->
-								<td><a href="deleteUsuario?id=${usr.id}">Eliminar</a></td> <!-- Aca hay que cambiar el href dependiendo de los nombres que uses en el controlador -->
-							</tr>
-		
-		                    </c:forEach>
-		                    </tbody>
-		                </table>
-		            </c:if>
-		        </div>
+				<form:form id="usuarioRegisterForm" modelAttribute="usuario" method="post" action="saveUsuario">
+					<form:hidden path="id"  value="${sedeObject.id}" />
+				  <div class="form-group">
+				    <label>Nombre</label>
+				    <form:input path="nombre" value="${usuarioObject.id}" class="form-control" />
+				    <form:errors path="nombre" cssClass="error"/>
+				  </div>
+				  <div class="form-group">
+				    <label>Apellido</label>
+				    <form:input path="apellido" class="form-control" />
+				    <form:errors path="apellido" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>DNI</label>
+				    <form:input path="dni" class="form-control" />
+				    <form:errors path="dni" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>Direccion</label>
+				    <form:input path="direccion" class="form-control" />
+				    <form:errors path="direccion" cssClass="error"/>>
+				  </div>
+				   <div class="form-group">
+				    <label>Password</label>
+				    <form:input path="pass" class="form-control" />
+				    <form:errors path="pass" cssClass="error"/>>
+				  </div>
+				  		
+				  <!--  ESTA PARTE DE ACA NO SE SI LA QUERES PONER ESCONDIDA POR SI TE HACE FALTA PARA INSERTAR USUARIOS O NO, PERO TE LA DEJO POR SI ACASO
+				  ERA EL CAMPO DISCRIMINADOR
+				   <div class="form-group">
+				    <label>tipo de usuario(valido: administrador o resposable)</label>
+				    <form:input path="tipo_usuario" class="form-control" />
+				    <form:errors path="tipo_usuario" cssClass="error"/>>
+				  </div>
+				  -->
+				 
+				  <button onclick="return submitusuarioForm();" type="submit" class="btn btn-default">Crear usuario</button>
+				</form:form>
+				 
+				
+			
+						
+			
+			
+			</div >
 			
 			<div style="height: 500px">
 				<jsp:include page="footer.jsp" flush="false" >

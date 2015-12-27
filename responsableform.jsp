@@ -5,18 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Comedor UNLP</title>
 
-<link rel="stylesheet" href="bootstrapIndex/css/bootstrap.min.css" type="text/css">
-
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap JS -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	
-	 <link href="jqueryBootgrid/jquery.bootgrid.css" rel="stylesheet" />
+		<jsp:include page="recursos.jsp" flush="false" >
+			<jsp:param name="recurso" value="subtitulo de pagina recurso.jsp"/>
+		</jsp:include>
 
 </head>
 <body>
@@ -79,7 +71,7 @@
 		  <br>
 		  <br>
 			
-			<div><h1>Para agregar un nuevo usuario</h1></div>
+			<div><h1>Para agregar un nuevo usuario RESPONSABLE</h1></div>
 			<div><h4>Complete los siguientes datos</h4></div>
 			
 			<div >
@@ -111,14 +103,20 @@
 				    <form:input path="pass" class="form-control" />
 				    <form:errors path="pass" cssClass="error"/>>
 				  </div>
+				   
+				   <!--  ES
+				   TA PARTE DE ACA NO SE SI LA QUERES PONER ESCONDIDA POR SI TE HACE FALTA PARA INSERTAR USUARIOS O NO, PERO TE LA DEJO POR SI ACASO
+				  ERA EL CAMPO DISCRIMINADOR
 				   <div class="form-group">
 				    <label>tipo de usuario(valido: administrador o resposable)</label>
 				    <form:input path="tipo_usuario" class="form-control" />
 				    <form:errors path="tipo_usuario" cssClass="error"/>>
 				  </div>
-				 
+				 -->
 				  <button onclick="return submitusuarioForm();" type="submit" class="btn btn-default">Crear usuario</button>
 				</form:form>
+				  
+				
 				
 				
 			
@@ -142,19 +140,8 @@
 	</div>
 </div>
 	
-
-
-<script type="text/javascript" src="/bootstrat-3.3.5-dist/js/bootstrap.min.js"></script> 
-</body>
-</html><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
+		<jsp:include page="script.jsp" flush="false" >
+			<jsp:param name="script" value="subtitulo de pagina script.jsp"/>
+		</jsp:include>
 </body>
 </html>
