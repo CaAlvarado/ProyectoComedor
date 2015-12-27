@@ -4,18 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Comedor UNLP</title>
 
-<link rel="stylesheet" href="bootstrapIndex/css/bootstrap.min.css" type="text/css">
 
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Bootstrap JS -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	
-	 <link href="jqueryBootgrid/jquery.bootgrid.css" rel="stylesheet" />
+		<jsp:include page="recursos.jsp" flush="false" >
+			<jsp:param name="recurso" value="subtitulo de pagina recurso.jsp"/>
+		</jsp:include>
+
 
 </head>
 <body>
@@ -117,8 +111,9 @@
 	</div>
 </div>
 	
-
-<script type="text/javascript" src="/bootstrat-3.3.5-dist/js/bootstrap.min.js"></script> 
-<script src="/resources/jqueryBootgrid/jquery.bootgrid.js"></script>
+		<jsp:include page="script.jsp" flush="false" >
+			<jsp:param name="script" value="subtitulo de pagina script.jsp"/>
+		</jsp:include>
+  
 </body>
 </html>
