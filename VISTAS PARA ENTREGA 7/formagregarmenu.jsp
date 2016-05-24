@@ -78,43 +78,69 @@
 				
 				
 				
-				<form:form id="usuarioRegisterForm" modelAttribute="administrador" method="post" action="guardarAdministrador">
-					<form:hidden path="id"  value="${usuarioObject.id}" />
+				<form:form id="menuRegisterForm" modelAttribute="menu" method="post" action="guardarMenu">
+					<form:hidden path="idMenu"  value="${usuarioObject.id}" />
 				  <div class="form-group">
-				    <label>Nombre del plato del menu</label>
+				    <label>Nombre del menu</label>
 				    <form:input path="nombre" value="${usuarioObject.nombre}" cssClass="form-control" required="required"/> <!-- Aca no le cambie los nombre de los path o del value porque si no, no me andaban para probarlo, hay que cambiarlo dependiendo de lo que pongamos en el controlador -->
 				    <form:errors path="nombre" cssClass="error"/>
 				  </div>
 				  <div class="form-group">
 				    <label>Indique si es apto para vegetariano</label>
-				    <form:checkbox value="vegetariano" path="apellido" cssClass="form-control" required="required"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path, o usar ese value ¿? =) -->
-				    <form:errors path="apellido" cssClass="error"/>
+				    <form:checkbox value="vegetariano" path="vegetariano" cssClass="form-control" required="required"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path, o usar ese value ¿? =) -->
+				    <form:errors path="vegetariano" cssClass="error"/>
+				  </div>
+				  <div class="form-group">
+				    <label>Indique si es apto para celiacos</label>
+				    <form:checkbox value="aptoceliaco" path="aptoCeliaco" cssClass="form-control"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path -->
+				    <form:errors path="aptoCeliaco" cssClass="error"/>
+				  </div>
+				   <div class="form-group">
+				    <label>Indique si es apto para diabeticos</label>
+				    <form:checkbox value="aptodiabetico" path="aptoDiabetico" cssClass="form-control"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path -->
+				    <form:errors path="aptoDiabetico" cssClass="error"/>
+				  </div>
+				  <div class="form-group">
+				  	<label>Indique si es apto para hipertenso</label>
+				  	<form:checkbox value="aptohipertenso" path="aptoHipertenso" cssClass="form-control"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path -->
+				  	<form:errors path="aptoHipertenso" cssClass="error"/>
+				  </div>
+				   <div class="form-group">
+				    <label>Indique si es apto lactosa</label>
+				    <form:checkbox value="aptolactosa" path="aptoLactosa" cssClass="form-control"/> <!-- aca pasa lo mismo, dependiendo del controlador me parece que hay que cambiar el value y el path -->
+				    <form:errors path="aptoLactosa" cssClass="error"/>
 				  </div>
 				  <div class="form-group">
 				    <label>Cantidad de semanas: indique un numero del 1 al 9</label>
 				    <form:input path="nombre" value="${usuarioObject.nombre}" cssClass="form-control" required="required"/> <!-- Aca no le cambie los nombre de los path o del value porque si no, no me andaban para probarlo, hay que cambiarlo dependiendo de lo que pongamos en el controlador -->
 				    <form:errors path="nombre" cssClass="error"/>
 				  </div>
+				  <div class="form-group">
+				  	<label>Precio del menu</label>
+				  	<form:input path="precioMenu" value="${menu.precioMenu}" cssClass="form-control" required="required"/>
+				  	<form:errors path="precioMenu" cssClass="error"/>
+				  </div>
 				  
 							
 							<!-- aca muestra todos los componentes y los puede ir eligiendo con un checkbox, asi puede agregar al menu la bebida o postre o principal o entrada que previamente haya cargado como componente de plato -->
 							<!-- hay que prestar atencion a lo que termina con s o no, no te vaya a pasar como a mi que me hice un lio por eso jaja -->
 				<div class="panel-body">
-		            <c:if test="${empty componente}"> <!-- aca iria la tabla "componente" me parece, pero no estoy seguro porque ese es el nombre que le pusimos a la tabla,-->
+		            <c:if test="${empty componentes}"> <!-- aca iria la tabla "componente" me parece, pero no estoy seguro porque ese es el nombre que le pusimos a la tabla,-->
 		                No hay componentes de plato aun   
 		            </c:if>
-		            <c:if test="${not empty componente}">	<!--  aca hay que cambiar el nombre de la tabla o de la variable que accede a la tabla, hay que cambiar la que dice "usuarios", depende como la hiciste en el controlador -->
+		            <c:if test="${not empty componentes}">	<!--  aca hay que cambiar el nombre de la tabla o de la variable que accede a la tabla, hay que cambiar la que dice "usuarios", depende como la hiciste en el controlador -->
 		                <table class="table">
 		                    <thead>
 		                    <tr>
 		                        <th>Nombre</th>
-		                       
+		                        <th>Elegir</th>
 		                    </tr>
 		                    </thead>
 		                    <tbody>
-		                    <c:forEach items="${componente}" var="usr"> <!-- aca hay que prestar atencion al nombre de la var que uses -->
+		                    <c:forEach items="${componentes}" var="compo"> <!-- aca hay que prestar atencion al nombre de la var que uses -->
 		                    <tr class="active">
-								<td><form:checkbox path="" value="${usr.nombre}" /></td>			<!--en este caso falta especificar el "path" aca le puse los nombres de las variables que tiene en la tabla componente, creo que hay que adaptar el controlador -->
+								<td>${compo.nombre}</td>
+								<td><form:checkbox path="nombre" value="${compo.nombre}" /></td>			<!--en este caso falta especificar el "path" aca le puse los nombres de las variables que tiene en la tabla componente, creo que hay que adaptar el controlador -->
 								<td><form:errors path="" cssClass="error"/></td>
 								
 								
