@@ -1,60 +1,54 @@
 package implementacionDAO;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Repository
 public class DAOHibernateJPA<T> implements interfazDAO.InterfazDAO<T>{
 
+	@PersistenceContext
+	protected EntityManager entityManager;
+	
 	protected Class<T> persistentClass;
 	
-	public DAOHibernateJPA(){}
+	public DAOHibernateJPA(){
+		
+	}
 	
 	public DAOHibernateJPA(Class<T> pc){
-		persistentClass= pc;
+		persistentClass=pc;
 	}
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+	
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+	
 	@Override
 	public T actualizar(T entity) {
-		EntityManager em= EMF.getEmf().createEntityManager();
-		EntityTransaction etx= em.getTransaction();
-		etx.begin();
-		T entidad=em.merge(entity);
-		etx.commit();
-		em.close();
-		return entidad;
+		this.getEntityManager().merge(entity);
+		return entity;
+	}
+
+	@Override
+	public void borrar(Serializable id) {
+		this.getEntityManager().remove(this.getEntityManager().find(this.getPersistentClass(), id));
 	}
 
 	@Override
 	public void borrar(T entity) {
-		EntityManager em=EMF.getEmf().createEntityManager();
-		EntityTransaction etx= null;
-		try{
-			etx = em.getTransaction();
-			etx.begin();
-			em.remove(entity);
-			etx.commit();
-		}
-		catch (RuntimeException e){
-			if (etx!= null && etx.isActive()) etx.rollback();
-			throw e;
-		}
-		finally{
-			em.close();
-		}
-	}
-
-	@Override
-	public T borrar(Serializable id) {
-		T entity = EMF.getEmf().createEntityManager().find(this.getPersistentClass(), id);
-		if (entity != null){
-			this.borrar(entity);
-		}
-		return entity;
+		this.getEntityManager().remove(entity);
 	}
 
 	public Class<T> getPersistentClass() {
@@ -63,7 +57,7 @@ public class DAOHibernateJPA<T> implements interfazDAO.InterfazDAO<T>{
 
 	@Override
 	public boolean existe(Serializable id) {
-		T entity = EMF.getEmf().createEntityManager().find(this.getPersistentClass(), id);
+		T entity = this.getEntityManager().find(this.getPersistentClass(), id);
 		if (entity != null){
 			return true;
 		}
@@ -73,42 +67,29 @@ public class DAOHibernateJPA<T> implements interfazDAO.InterfazDAO<T>{
 	public void setPersistentClass(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
-
+	
+	@Transactional
 	@Override
 	public T persistir(T entity) {
-		EntityManager em= EMF.getEmf().createEntityManager();
-		EntityTransaction etx=null;
-		try{
-			etx = em.getTransaction();
-			etx.begin();
-			em.persist(entity);
-			etx.commit();
-		}
-		catch (RuntimeException e){
-			if (etx !=null && etx.isActive()) etx.rollback();
-			throw e;
-		}
-		finally{
-			em.close();
-		}
+		this.getEntityManager().persist(entity);
 		return entity;
 	}
 
 	@Override
 	public T recuperar(Serializable id) {
-		T entity = EMF.getEmf().createEntityManager().find(this.getPersistentClass(), id);
+		T entity = this.getEntityManager().find(this.getPersistentClass(), id);
 		return entity;
 	}
 
 	public List<T> recuperarTodos(String orden){
-		Query consulta= EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden);
+		Query consulta= this.getEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden);
 		List<T> resultado = consulta.getResultList();
 		return resultado;
 	}
 	
 	public List<T> recuperarTodos(int cantidad, int limite, String orden){
-		TypedQuery<T> consulta= (TypedQuery<T>) EMF.getEmf().createEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden+" limit "+cantidad+","+limite);
-		List<T> resultado= (List<T>) consulta.getResultList();
+		Query consulta= this.getEntityManager().createQuery("select e from "+getPersistentClass().getSimpleName()+" e order by e."+orden+" limit "+cantidad+","+limite);
+		List<T> resultado= consulta.getResultList();
 		return resultado;
 	}
 	

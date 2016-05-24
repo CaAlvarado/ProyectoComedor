@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +23,7 @@ public class ControllerComponente {
 	
 	@RequestMapping("agregarComponente")
 	public ModelAndView agregarComponente(@ModelAttribute Componente componente, HttpSession sesion){
-		return new ModelAndView("componenteform", "sesion", sesion);
+		return new ModelAndView("formagregarcomponente", "sesion", sesion);
 	}
 	
 	@RequestMapping("guardarComponente")
@@ -42,13 +43,13 @@ public class ControllerComponente {
 		List<Componente> listaCompos = compodao.recuperarComponentes();
 		modelAndView.addObject("sesion", sesion);
 		modelAndView.addObject("componentes", listaCompos);
-		modelAndView.setViewName("verComponentes");
+		modelAndView.setViewName("vercomponentesdeplato");
 		return modelAndView;
 	}
 	
 	@RequestMapping("modificarComponente")
 	public ModelAndView modificarComponente(@ModelAttribute Componente componente, HttpSession sesion){
-		return new ModelAndView("componenteform", "sesion", sesion);
+		return new ModelAndView("formeditarcomponente", "sesion", sesion);
 	}
 	
 	@RequestMapping("actualizarComponente")
@@ -58,8 +59,8 @@ public class ControllerComponente {
 	}
 	
 	@RequestMapping("borrarComponente/{idComponente}")
-	public ModelAndView borrarComponente(@ModelAttribute Componente componente){
-		compodao.borrar(componente.getIdComponente());
+	public ModelAndView borrarComponente(@PathVariable("idComponente") long id){
+		compodao.borrar(id);
 		return new ModelAndView("redirect:/listarComponentes");
 	}
 }

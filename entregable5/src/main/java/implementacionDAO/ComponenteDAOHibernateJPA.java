@@ -1,10 +1,11 @@
 package implementacionDAO;
 
+import interfazDAO.ComponenteDAO;
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import interfazDAO.ComponenteDAO;
 import modelo.Componente;
 
 @Component
